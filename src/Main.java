@@ -10,9 +10,11 @@ public class Main {
         Table.startTable(table);
         while(ticTacToe.isMatch()){
             Table.refreshTable(table);
-            //Game.winCondition(table);
-            if(!Game.winCondition().equals(" ")){
-                System.out.println("Jogador %s venceu");
+            if(Game.winCondition(table,ticTacToe.getStartChar()).equals("x")){
+                System.out.printf("Player 'X' won%n");
+                break;}
+            else if(Game.winCondition(table,ticTacToe.getStartChar()).equals("o")){
+                System.out.printf("Player 'O' won%n");
                 break;
             }
             try{
@@ -21,9 +23,9 @@ public class Main {
                         ticTacToe.setStartChar('o');
                     } else ticTacToe.setStartChar('x');
             }catch(Exception e){
-                System.out.println("ERRO");
+                System.out.println("ERROR");
             }
         }
-        System.out.println("Fim do jogo");
+        System.out.println("GAME FINISHED");
     }
 }

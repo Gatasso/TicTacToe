@@ -2,7 +2,7 @@ package galasso.java.dev.estudos;
 import java.util.Scanner;
 
 public class Game {
-    public char startChar,gameChar;
+    public char startChar,gameChar, finalChar;
 
 
     public Game(){
@@ -30,10 +30,23 @@ public class Game {
         }
     }
 
-    public static String winCondition(){
-        return " ";
+    public static String winCondition(Table[][] board, char nowSymbol){
+        for (int line = 0; line < 3; line++) {
+            for (int column = 0; column < 3; column++) {
+                if (board[line][0].getGameChar() == 'x' && board[line][1].getGameChar()== 'x' && board[line][2].getGameChar()== 'x'||
+                    board[0][column].getGameChar() == 'x' && board[1][column].getGameChar()== 'x' && board[2][column].getGameChar()== 'x'||
+                    board[0][0].getGameChar() == 'x' && board[1][1].getGameChar()== 'x' && board[2][2].getGameChar()== 'x'||
+                    board[0][2].getGameChar() == 'x' && board[1][1].getGameChar()== 'x' && board[2][0].getGameChar()== 'x'){
+                        return "x";
+                }else
+                if (board[line][0].getGameChar() == 'o' && board[line][1].getGameChar()== 'o' && board[line][2].getGameChar()== 'o'||
+                    board[0][column].getGameChar() == 'o' && board[1][column].getGameChar()== 'o' && board[2][column].getGameChar()== 'o'||
+                    board[0][0].getGameChar() == 'o' && board[1][1].getGameChar()== 'o' && board[2][2].getGameChar()== 'o'||
+                    board[0][2].getGameChar() == 'o' && board[1][1].getGameChar()== 'o' && board[2][0].getGameChar()== 'o')
+                        return "o";
+            }
+        } return " ";
     }
-
 
     public void setStartChar(char startChar) {
         this.startChar = startChar;
@@ -41,6 +54,14 @@ public class Game {
 
     public char getStartChar() {
         return startChar;
+    }
+
+    public char getFinalChar() {
+        return finalChar;
+    }
+
+    public void setFinalChar(char finalChar) {
+        this.finalChar = finalChar;
     }
 
     public char getGameChar() {
